@@ -33,7 +33,6 @@ return {
         },
         navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
-        neotree = true,
         semantic_tokens = true,
         telescope = true,
         treesitter = true,
