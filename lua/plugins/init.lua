@@ -1,4 +1,4 @@
-return{
+return {
   {
     "j-hui/fidget.nvim",
   },
@@ -10,7 +10,11 @@ return{
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
+      require("nvim-tree").setup({})
     end,
-  }
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+  },
 }
