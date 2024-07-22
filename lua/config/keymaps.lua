@@ -2,3 +2,11 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+-- Add this to your key mappings
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>uh",
+  ':lua require("lsp-inlayhints").toggle()<CR>',
+  { noremap = true, silent = true }
+)
