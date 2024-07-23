@@ -21,6 +21,17 @@ if vim.fn.has("wsl") == 1 then
   }
 end
 
+-- Override the cmp.entry.get_documentation setting
+require("cmp").setup({
+  lsp = {
+    override = {
+      ["cmp.entry.get_documentation"] = {
+        enabled = false,
+      },
+    },
+  },
+})
+
 -- Custom highlights for documentation
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e1e2e", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1e1e2e", fg = "#cdd6f4" })

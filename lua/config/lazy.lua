@@ -46,6 +46,3 @@ require("lazy").setup({
     },
   },
 })
-
-require('java').setup()
-require('lspconfig').jdtls.setup({})
