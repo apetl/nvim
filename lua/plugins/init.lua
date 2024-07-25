@@ -23,4 +23,9 @@ return {
     "tpope/vim-fugitive",
     cmd = { "Git", "Gstatus", "Gblame", "Gpush", "Gpull" },
   },
+  {
+    "Aasim-A/scrollEOF.nvim",
+    event = { "CursorMoved", "WinScrolled" },
+    opts = {},
+  },
 }

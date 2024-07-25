@@ -21,6 +21,8 @@ if vim.fn.has("wsl") == 1 then
   }
 end
 
+require("scrollEOF").setup()
+
 -- Override the cmp.entry.get_documentation setting
 require("cmp").setup({
   lsp = {
