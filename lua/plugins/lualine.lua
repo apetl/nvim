@@ -22,11 +22,21 @@ return {
       options = {
         theme = "auto",
         globalstatus = true,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_b = {
+          {
+            "branch",
+            update_in_insert = false,
+          },
+        },
 
         lualine_c = {
           {
@@ -54,7 +64,7 @@ return {
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = { fg = "#98c379" },  -- You can use hex colors directly
+            color = { fg = "#98c379" },
           },
           -- stylua: ignore
           {
@@ -80,6 +90,9 @@ return {
               modified = icons.git.modified,
               removed = icons.git.removed,
             },
+            update_in_insert = false,
+            always_visible = false,
+            colored = true,
             source = function()
               local gitsigns = vim.b.gitsigns_status_dict
               if gitsigns then
@@ -90,6 +103,11 @@ return {
                 }
               end
             end,
+            refresh = {
+              statusline = 5000, -- Update git stats every 5 seconds
+              tabline = 5000,
+              winbar = 5000,
+            },
           },
         },
         lualine_y = {
