@@ -5,12 +5,13 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     provider = "ollama",
+    auto_suggestions_provider = "ollama",
     vendors = {
       ---@type AvanteProvider
       ollama = {
         ["local"] = true,
         endpoint = "127.0.0.1:11434/v1",
-        model = "qwen2.5-coder",
+        model = "codex",
         parse_curl_args = function(opts, code_opts)
           return {
             url = opts.endpoint .. "/chat/completions",

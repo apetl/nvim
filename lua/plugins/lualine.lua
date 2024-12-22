@@ -11,7 +11,6 @@ return {
     end
   end,
   opts = function()
-    -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require("lualine_require")
     lualine_require.require = require
 
@@ -30,7 +29,15 @@ return {
         lualine_b = { "branch" },
 
         lualine_c = {
-          LazyVim.lualine.root_dir(),
+          {
+            "filename",
+            path = 1,
+            symbols = {
+              modified = "[+]",
+              readonly = "[-]",
+              unnamed = "[No Name]",
+            },
+          },
           {
             "diagnostics",
             symbols = {
@@ -41,31 +48,30 @@ return {
             },
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { LazyVim.lualine.pretty_path() },
         },
         lualine_x = {
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = LazyVim.ui.fg("Statement"),
+            color = { fg = "#98c379" },  -- You can use hex colors directly
           },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = LazyVim.ui.fg("Constant"),
+            color = { fg = "#56b6c2" },
           },
           -- stylua: ignore
           {
-            function() return "  " .. require("dap").status() end,
+            function() return "  " .. require("dap").status() end,
             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = LazyVim.ui.fg("Debug"),
+            color = { fg = "#e5c07b" },
           },
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = LazyVim.ui.fg("Special"),
+            color = { fg = "#c678dd" },
           },
           {
             "diff",
@@ -90,7 +96,6 @@ return {
           { "progress" },
         },
         lualine_z = {
-          -- Clock function removed from here
           { "location", padding = { left = 0, right = 1 } },
         },
       },
