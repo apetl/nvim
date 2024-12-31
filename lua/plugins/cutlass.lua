@@ -1,7 +1,7 @@
 return {
   "gbprod/cutlass.nvim",
   opts = {
-    cut_key = "c",
+    cut_key = "_d",
     override_del = true,
     registers = {
       select = "_",
