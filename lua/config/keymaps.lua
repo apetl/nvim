@@ -4,12 +4,16 @@
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 -- Add this to your key mappings
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>uh",
-  ':lua require("lsp-inlayhints").toggle()<CR>',
-  { noremap = true, silent = true }
-)
+--vim.api.nvim_set_keymap(
+--  "n",
+--  "<leader>uh",
+--  ':lua require("lsp-inlayhints").toggle()<CR>',
+--  { noremap = true, silent = true }
+--)
+
+--vim.keymap.set("n", "<leader>uh", function()
+--  require("lsp-inlayhints").toggle()
+--end, { desc = "Toggle inlay hints" })
 
 -- Map new movement keys
 -- vim.api.nvim_set_keymap("n", "i", "k", { noremap = true, silent = true })
