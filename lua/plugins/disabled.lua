@@ -4,5 +4,4 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   -- { "nvim-tree/nvim-tree.nvim", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
-  { "yetone/avante", enabled = false },
 }
