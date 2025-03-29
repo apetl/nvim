@@ -18,3 +18,15 @@ if vim.fn.has("wsl") == 1 then
     cache_enabled = 1,
   }
 end
+
+-- Toggle line length limit to 80 characters
+vim.keymap.set("n", "uW", function()
+  if vim.o.textwidth == 80 then
+    vim.o.textwidth = 0 -- Disable line length limit
+    print("Line length limit disabled")
+  else
+    vim.o.textwidth = 80 -- Enable line length limit at 80 characters
+    print("Line length limited to 80 characters")
+  end
+end, { desc = "Toggle line length limit to 80 characters" })
+
