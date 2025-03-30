@@ -12,6 +12,7 @@ return {
       date_format = "📌%Y-W%V", -- Weekly note naming format
     },
     ui = { enable = false },
+    disable_frontmatter = true,
   },
   config = function(_, opts)
     require("obsidian").setup(opts)

@@ -5,7 +5,7 @@ local function update_date_modified()
   -- Check if the file has YAML front matter (starts with "---")
   if line1 == "---" then
     local date_modified_line_index = nil
-    local date_modified = os.date("%d-%m-%Y") -- Format: DD-MM-YYYY
+    local date_modified = os.date("%Y-%m-%d") -- Format: DD-MM-YYYY
 
     -- Find the "dateModified" field in the YAML front matter
     for i = 2, vim.fn.line("$") do
