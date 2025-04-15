@@ -31,7 +31,8 @@ return {
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
   lazy = false,
   keys = {
-    { "<leader>fo", "<cmd>Oil --float --preview<cr>", desc = "Open Oil file explorer in float" },
+    { "<leader>fo", "<cmd>Oil --float --preview<cr>", desc = "Open Oil" },
+    { "<leader>o", "<cmd>Oil --float --preview<cr>", desc = "Open Oil" },
   },
   config = function(_, opts)
     require("oil").setup(opts)
