@@ -18,6 +18,10 @@ return {
       toggles = {
         dim = false,
       },
+      show = { statusline = true, tabline = true },
+      win = {
+        width = 100,
+      },
     },
   },
 }
