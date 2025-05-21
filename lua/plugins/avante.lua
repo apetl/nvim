@@ -9,7 +9,13 @@ return {
       model = "gemini-2.0-flash",
       timeout = 30000,
       temperature = 0,
-      max_tokens = 8192,
+      max_tokens = 16384,
+    },
+    openai = {
+      model = "gpt-4.1-nano",
+    },
+    web_search_engine = {
+      provider = "brave",
     },
   },
   build = (function()
