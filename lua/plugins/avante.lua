@@ -4,15 +4,19 @@ return {
   version = false,
   opts = {
     provider = "gemini",
-    google = {
-      endpoint = "https://api.google.com/v1",
-      model = "gemini-2.0-flash",
-      timeout = 30000,
-      temperature = 0,
-      max_tokens = 16384,
-    },
-    openai = {
-      model = "gpt-4.1-nano",
+    providers = {
+      google = {
+        endpoint = "https://api.google.com/v1",
+        model = "gemini-2.0-flash",
+        timeout = 30000,
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 16384,
+        },
+      },
+      openai = {
+        model = "gpt-4.1-nano",
+      },
     },
     web_search_engine = {
       provider = "brave",
