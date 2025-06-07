@@ -6,6 +6,7 @@ return {
     provider = "gemini",
     providers = {
       google = {
+        __inherited_from = "openai",
         endpoint = "https://api.google.com/v1",
         model = "gemini-2.0-flash",
         timeout = 30000,
@@ -16,6 +17,16 @@ return {
       },
       openai = {
         model = "gpt-4.1-nano",
+      },
+      groq = {
+        __inherited_from = "openai",
+        api_key_name = "GROQ_API_KEY",
+        endpoint = "https://api.groq.com/openai/v1/",
+        extra_request_body = {
+          max_tokens = 8192,
+          max_completion_tokens = 1024,
+        },
+        model = "meta-llama/llama-4-maverick-17b-128e-instruct",
       },
     },
     web_search_engine = {
