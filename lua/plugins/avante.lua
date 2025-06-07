@@ -5,13 +5,11 @@ return {
   opts = {
     provider = "gemini",
     providers = {
-      google = {
-        __inherited_from = "openai",
-        endpoint = "https://api.google.com/v1",
+      gemini = {
+        __inherited_from = "gemini",
         model = "gemini-2.0-flash",
         timeout = 30000,
         extra_request_body = {
-          temperature = 0,
           max_tokens = 16384,
         },
       },
