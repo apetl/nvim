@@ -7,7 +7,7 @@ return {
     providers = {
       gemini = {
         __inherited_from = "gemini",
-        model = "gemini-2.0-flash",
+        model = "gemini-2.5-flash",
         timeout = 30000,
         extra_request_body = {
           max_tokens = 16384,
@@ -25,6 +25,15 @@ return {
           max_completion_tokens = 1024,
         },
         model = "meta-llama/llama-4-maverick-17b-128e-instruct",
+      },
+      mistral = {
+        __inherited_from = "openai",
+        api_key_name = "MISTRAL_API_KEY",
+        endpoint = "https://api.mistral.ai/v1/",
+        model = "devstral-small-latest",
+        extra_request_body = {
+          max_tokens = 4096,
+        },
       },
     },
     web_search_engine = {
