@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   version = false,
   opts = {
-    provider = "gemini",
+    provider = "mistral",
     providers = {
       gemini = {
         __inherited_from = "gemini",
@@ -30,9 +30,9 @@ return {
         __inherited_from = "openai",
         api_key_name = "MISTRAL_API_KEY",
         endpoint = "https://api.mistral.ai/v1/",
-        model = "devstral-small-latest",
+        model = "devstral-small-2505",
         extra_request_body = {
-          max_tokens = 4096,
+          max_tokens = 8192,
         },
       },
     },
