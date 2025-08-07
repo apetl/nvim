@@ -1,11 +1,17 @@
 return {
   "kawre/leetcode.nvim",
   lazy = true,
-  --build = ":TSUpdate html",
+  cmd = { "Leet" },
   dependencies = {
-    picker = { provider = nil },
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
-  opts = {},
+  opts = {
+    picker = {
+      provider = nil,
+    },
+  },
+  config = function(_, opts)
+    require("leetcode").setup(opts)
+  end,
 }

@@ -24,7 +24,7 @@ return {
         },
       },
       openai = {
-        model = "gpt-4.1-nano",
+        model = "gpt-5.1-nano",
       },
       groq = {
         __inherited_from = "openai",
@@ -34,7 +34,7 @@ return {
           max_tokens = 8192,
           max_completion_tokens = 1024,
         },
-        model = "meta-llama/llama-4-maverick-17b-128e-instruct",
+        model = "openai/gpt-oss-20b",
       },
       mistral = {
         __inherited_from = "openai",
