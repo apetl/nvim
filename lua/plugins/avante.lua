@@ -1,7 +1,16 @@
 return {
   "yetone/avante.nvim",
+
   lazy = true,
-  event = "VeryLazy",
+  cmd = { "Avante" },
+  keys = {
+    {
+      "<leader>a",
+      "<cmd>Avante<CR>",
+      desc = "Open Avante",
+    },
+  },
+
   version = false,
   opts = {
     provider = "mistral",
