@@ -1,51 +1,66 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   lazy = true,
-  dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use the mini.nvim suite
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
-
-  opts = {
-    bullet = {
-      -- Turn on / off list bullet rendering
-      enabled = true,
-    },
-    checkbox = {
-      -- Turn on / off checkbox state rendering
-      enabled = true,
-      -- Determines how icons fill the available space:
-      --  inline:  underlying text is concealed resulting in a left aligned icon
-      --  overlay: result is left padded with spaces to hide any additional text
-      position = "inline",
-      unchecked = {
-        -- Replaces '[ ]' of 'task_list_marker_unchecked'
-        icon = " 󰄱",
-        -- Highlight for the unchecked icon
-        highlight = "RenderMarkdownUnchecked",
-        -- Highlight for item associated with unchecked checkbox
-        scope_highlight = nil,
-      },
-      checked = {
-        -- Replaces '[x]' of 'task_list_marker_checked'
-        icon = " 󰱒",
-        -- Highlight for the checked icon
-        highlight = "RenderMarkdownChecked",
-        -- Highlight for item associated with checked checkbox
-        scope_highlight = nil,
-      },
-    },
-    html = {
-      -- Turn on / off all HTML rendering
-      enabled = true,
-      comment = {
-        -- Turn on / off HTML comment concealing
-        conceal = false,
-      },
-    },
-    heading = {
-      sign = true,
-      icons = { " 󰇊 ", " 󰇋 ", " 󰇌 ", " 󰇍 ", " 󰇎 ", " 󰇏 " },
-      position = "inline",
-    },
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "echasnovski/mini.icons",
   },
+  opts = (function()
+    -- AUTO-DETECT WSL FOR PATH-HANDLING PLUGINS
+    local is_wsl = vim.fn.has("wsl") == 1
+
+    -- CRITICAL: Force consistent path handling for link resolution
+    if is_wsl then
+      -- Fix for WSL: Ensure all paths use /mnt/c format
+      vim.opt.path:append("/mnt/c/**")
+      vim.opt.suffixesadd:append(".md")
+    end
+
+    return {
+      bullet = { enabled = true },
+      checkbox = {
+        enabled = true,
+        position = "inline",
+        unchecked = {
+          icon = " 󰄱",
+          highlight = "RenderMarkdownUnchecked",
+        },
+        checked = {
+          icon = " 󰱒",
+          highlight = "RenderMarkdownChecked",
+        },
+      },
+      html = { enabled = true, comment = { conceal = false } },
+      heading = {
+        sign = true,
+        icons = { " 󰇊 ", " 󰇋 ", " 󰇌 ", " 󰇍 ", " 󰇎 ", " 󰇏 " },
+        position = "inline",
+      },
+    }
+  end)(),
+  config = function(_, opts)
+    require("render-markdown").setup(opts)
+
+    if vim.fn.has("wsl") == 1 then
+      local function patch_link_handler()
+        -- Override the default link handler to convert Windows paths
+        local orig_handler = require("obsidian").util.go_to_file
+        if not orig_handler then
+          return
+        end
+
+        require("obsidian").util.go_to_file = function(path)
+          local wsl_path = path
+            :gsub("^([A-Z]):", function(d)
+              return "/mnt/" .. d:lower()
+            end)
+            :gsub("\\", "/")
+          return orig_handler(wsl_path)
+        end
+      end
+
+      -- Apply patch only if obsidian.nvim is loaded
+      pcall(patch_link_handler)
+    end
+  end,
 }
