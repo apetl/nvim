@@ -28,7 +28,7 @@ return {
     },
     use_default_keymaps = true,
   },
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   lazy = false,
   keys = {
     { "<leader>fo", "<cmd>Oil --float --preview<cr>", desc = "Open Oil" },
