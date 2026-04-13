@@ -29,4 +29,3 @@ vim.keymap.set("n", "uW", function()
     print("Line length limited to 80 characters")
   end
 end, { desc = "Toggle line length limit to 80 characters" })
-
