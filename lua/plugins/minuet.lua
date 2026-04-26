@@ -14,7 +14,7 @@ return {
       -- },
       -- openrouter
       openai_compatible = {
-        model = "mistralai/codestral-2508@preset/dev",
+        model = "mistralai/mistral-small-3.2-24b-instruct",
         end_point = "https://openrouter.ai/api/v1/chat/completions",
         api_key = os.getenv("OPENROUTER_API_KEY"),
         name = "",
